@@ -14,9 +14,19 @@ type Services struct {
 
 // Service is a single service configuration with the defined property
 type Service struct {
-	URL      string `json:"url"`
-	Delay    int    `json:"delay"`
-	Notifier string `json:"notifier"`
+	URL      string   `json:"url"`
+	Name     string   `json:"name"`
+	Delay    int      `json:"delay"`
+	Notifier string   `json:"notifier"`
+	SendGrid Sendgrid `json:"sendgrid"`
+}
+
+// Sendgrid represent the sendgrid configuration
+type Sendgrid struct {
+	From    string `json:"from"`
+	To      string `json:"to"`
+	Body    string `json:"body"`
+	Subject string `json:"subject"`
 }
 
 func readFile() Services {
