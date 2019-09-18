@@ -22,7 +22,7 @@ func main() {
 		go func(link chanStructure) {
 			if !link.isUp {
 				notifier := getNotifier(link.service.Notifier)
-				notifier.Notify(link.service.URL)
+				notifier.Notify(link.service)
 			}
 
 			time.Sleep(time.Duration(link.service.Delay) * time.Second)

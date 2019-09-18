@@ -7,6 +7,6 @@ type SMTP struct {
 }
 
 // Notify the user via email
-func (e SMTP) Notify(url string) {
+func (e SMTP) Notify(service Service) {
 	fmt.Println("send email via smtp")
 }

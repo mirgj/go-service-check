@@ -2,7 +2,7 @@ package main
 
 // Notifier interface
 type Notifier interface {
-	Notify(url string)
+	Notify(service Service)
 }
 
 var notifiers = map[string]Notifier{
