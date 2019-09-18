@@ -4,8 +4,6 @@ import (
 	"bytes"
 	"fmt"
 	"net/http"
-	"strconv"
-	"strings"
 	"time"
 )
 
@@ -50,16 +48,8 @@ func (e SendGrid) Notify(service Service) {
 	client := &http.Client{}
 	resp, err := client.Do(req)
 	if err != nil {
-		fmt.Println("Error sending the notification: " + err.Error())
+		fmt.Println("Error sending the notification via SendGrid: " + err.Error())
 	}
 
 	defer resp.Body.Close()
-}
-
-func replaceTokens(service Service, str string) string {
-	newStr := strings.Replace(str, "{{url}}", service.URL, -1)
-	newStr = strings.Replace(newStr, "{{name}}", service.Name, -1)
-	newStr = strings.Replace(newStr, "{{delay}}", strconv.Itoa(service.Delay), -1)
-
-	return newStr
 }
