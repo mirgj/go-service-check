@@ -14,11 +14,20 @@ type Services struct {
 
 // Service is a single service configuration with the defined property
 type Service struct {
-	URL      string   `json:"url"`
-	Name     string   `json:"name"`
-	Delay    int      `json:"delay"`
-	Notifier string   `json:"notifier"`
-	SendGrid Sendgrid `json:"sendgrid"`
+	URL      string     `json:"url"`
+	Name     string     `json:"name"`
+	Delay    int        `json:"delay"`
+	Notifier string     `json:"notifier"`
+	SendGrid Sendgrid   `json:"sendgrid"`
+	SMTP     SMTPStruct `json:"smtp"`
+}
+
+// SMTPStruct represent the configuration to be extended for the smtp client
+type SMTPStruct struct {
+	From    string `json:"from"`
+	To      string `json:"to"`
+	Body    string `json:"body"`
+	Subject string `json:"subject"`
 }
 
 // Sendgrid represent the sendgrid configuration
