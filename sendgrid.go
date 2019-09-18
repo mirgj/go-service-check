@@ -16,7 +16,6 @@ func (e SendGrid) Notify(service Service) {
 	t := time.Now()
 	fmt.Println(t.Format("2006-01-02 15:04:05") + ": " + service.URL + " is down, sending notification via SendGrid!")
 
-	apiKey := SendGridAPIKey
 	sendGridURL := "https://api.sendgrid.com/v3/mail/send"
 	var jsonStr = []byte(`
 	{
@@ -42,7 +41,7 @@ func (e SendGrid) Notify(service Service) {
 	}`)
 
 	req, err := http.NewRequest("POST", sendGridURL, bytes.NewBuffer(jsonStr))
-	req.Header.Set("Authorization", "Bearer "+apiKey)
+	req.Header.Set("Authorization", "Bearer "+SendGridAPIKey)
 	req.Header.Set("Content-Type", "application/json")
 
 	client := &http.Client{}
