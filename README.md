@@ -1,6 +1,6 @@
 # go-service-check
 
-Small utility to check wether a given endpoint is up or down. Supports multiple notification channels
+Small utility to check whether or not a given endpoint is up. Supports multiple notification channels
 
 - console
 - SMTP
@@ -52,12 +52,12 @@ The utility uses a `db.json` which needs to have the following structure to:
 
 The array contains a structure with the following fields:
 
-- `url`: URL and/or API endpoint to check
+- `url`: URL and/or API endpoint to check (a GET HTTP request will be performed to verify the service availability)
 - `name`: Service name to be used as alias for the given URL
 - `delay`: Defines the seconds between one ping and another
 - `notifier`: Define the type of notifier to be used (allowed values: `console`, `sendgrid`, `smtp`)
 
-In case the **notifier** is `sendgrid` or `smtp` the following options are required on the specific site:
+In case the **notifier** is `sendgrid` or `smtp` the following options are required on the specific element with the given notifier:
 
 ```json
 {
@@ -72,9 +72,9 @@ In case the **notifier** is `sendgrid` or `smtp` the following options are requi
 
 The `body` and `subject` can contain the following placeholder that will be replaced with the actual value:
 
-- {{url}}: replaced with the service URL
-- {{delay}}: replaced with the configured delay
-- {{name}}: replaced with the service name
+- `{{url}}`: replaced with the service URL
+- `{{delay}}`: replaced with the configured delay
+- `{{name}}`: replaced with the service name
 
 ### Full configuration file
 
