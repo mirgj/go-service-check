@@ -23,19 +23,19 @@ func (e SendGrid) Notify(service Service) {
 			{
 				"to": [
 					{
-						"email": "` + service.SendGrid.To + `"
+						"email": "` + service.Options.To + `"
 					}
 				],
-				"subject": "` + replaceTokens(service, service.SendGrid.Subject) + `"
+				"subject": "` + replaceTokens(service, service.Options.Subject) + `"
 			}
 		],
 		"from": {
-			"email": "` + service.SendGrid.From + `"
+			"email": "` + service.Options.From + `"
 		},
 		"content": [
 			{
 				"type": "text/plain",
-				"value": "` + replaceTokens(service, service.SendGrid.Body) + `"
+				"value": "` + replaceTokens(service, service.Options.Body) + `"
 			}
 		]
 	}`)
